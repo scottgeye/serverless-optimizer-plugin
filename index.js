@@ -285,7 +285,7 @@ module.exports = function(S) {
           includePaths.forEach(p => {
             let destPath = path.join(_this.optimizedDistPath, p),
                 srcPath  = path.join(_this.evt.options.pathDist, p),
-                destDir  = (fs.lstatSync(p).isDirectory()) ? destPath : path.dirname(destPath);
+                destDir  = (fs.lstatSync(path.join(_this.evt.options.pathDist, p)).isDirectory()) ? destPath : path.dirname(destPath);
 
             fs.mkdirsSync(destDir, '0777');
             deferredCopies.push(
